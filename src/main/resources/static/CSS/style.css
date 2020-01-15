@@ -15,7 +15,8 @@
 
 .sml-titulo-panel{
 	float: left;
-	padding-top: 0px;
+	padding-top: 2px;
+	font-weight: bold;
 }
 .sml-link-panel{
 	float: right;

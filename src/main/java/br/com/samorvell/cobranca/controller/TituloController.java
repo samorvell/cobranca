@@ -19,9 +19,11 @@ import br.com.samorvell.cobranca.repository.Titulos;
 public class TituloController {
 	
 	
-	@Autowired
+	@Autowired //injesão de dependencias para autoamticamente criar as tabelas na base
 	private Titulos titulos;
 	
+	
+	//@@RequestMapping para efetuar as solicitações de request e disptchers para o navegador
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView("cadastrotitulo");		 
@@ -37,8 +39,11 @@ public class TituloController {
 	}
 	
 	@RequestMapping
-	public String  pesquisar() {
-		return "PesquisaTitulos";
+	public ModelAndView  pesquisar() {
+		List<Titulo>todosTitulos = titulos.findAll();
+		ModelAndView mv = new ModelAndView("PesquisaTitulos");
+		mv.addObject("titulos", todosTitulos);
+		return mv;
 	}
 	
 	@ModelAttribute("todosStatusTitulo")

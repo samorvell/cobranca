@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import br.com.samorvell.cobranca.model.Titulo;
 
 public interface Titulos extends JpaRepository<Titulo, Long>{
-
+		//repositorio de acesso ao banco utilizando jpa
 }
