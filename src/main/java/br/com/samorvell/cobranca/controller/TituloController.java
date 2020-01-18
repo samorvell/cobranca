@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,39 +19,43 @@ import br.com.samorvell.cobranca.repository.Titulos;
 @Controller
 @RequestMapping("/titulos")
 public class TituloController {
-	
-	
-	@Autowired //injesão de dependencias para autoamticamente criar as tabelas na base
+
+	@Autowired // injesão de dependencias para autoamticamente criar as tabelas na base
 	private Titulos titulos;
-	
-	
-	//@@RequestMapping para efetuar as solicitações de request e disptchers para o navegador
+
+	// @@RequestMapping para efetuar as solicitações de request e disptchers para o
+	// navegador
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
-		ModelAndView mv = new ModelAndView("cadastrotitulo");		 
+		ModelAndView mv = new ModelAndView("cadastrotitulo");
+		mv.addObject(new Titulo());
 		return mv;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(Titulo titulo) {
-			titulos.save(titulo);		
-			ModelAndView mv = new ModelAndView("cadastrotitulo");
-			mv.addObject("mensagem", "Título salvo com sucesso!");
+	public ModelAndView salvar(@Validated Titulo titulo, Errors errors) {
+		ModelAndView mv = new ModelAndView("cadastrotitulo");
+		if (errors.hasErrors()) {
 			return mv;
+		}
+
+		titulos.save(titulo);
+
+		mv.addObject("mensagem", "Título salvo com sucesso!");
+		return mv;
 	}
-	
+
 	@RequestMapping
-	public ModelAndView  pesquisar() {
-		List<Titulo>todosTitulos = titulos.findAll();
+	public ModelAndView pesquisar() {
+		List<Titulo> todosTitulos = titulos.findAll();
 		ModelAndView mv = new ModelAndView("PesquisaTitulos");
 		mv.addObject("titulos", todosTitulos);
 		return mv;
 	}
-	
+
 	@ModelAttribute("todosStatusTitulo")
-	public List<StatusTitulo> todosStatusTitulo(){
+	public List<StatusTitulo> todosStatusTitulo() {
 		return Arrays.asList(StatusTitulo.values());
 	}
-	
 
 }

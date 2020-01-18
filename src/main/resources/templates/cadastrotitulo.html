@@ -7,10 +7,17 @@
 <title>Cadastro de título</title>
 </head>
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" method="POST" action="/titulos">
+	<form class="form-horizontal" method="POST" action="/titulos"
+		th:object="${titulo}"> <!-- se no objeto #titulo conter erros ele rederisa o #fields -->
 		<div class="alert alert-sucess" th:if="${!#strings.isEmpty(mensagem)}">
 			<span th:text="${mensagem}">Título salvo com sucesso!!!</span>
 		</div>
+		<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}"> <!-- Só redereza se conter erro o objeto titulo -->
+			<div th:each="detailedError : ${#fields.detailedError()}">
+				<span th:text="${detailedError.message}"></span>
+			</div>
+		</div>
+
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="clearfix">
