@@ -12,8 +12,10 @@
 		<div class="alert alert-sucess" th:if="${!#strings.isEmpty(mensagem)}">
 			<span th:text="${mensagem}">Título salvo com sucesso!!!</span>
 		</div>
+		
+		
 		<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}"> <!-- Só redereza se conter erro o objeto titulo -->
-			<div th:each="detailedError : ${#fields.detailedError()}">
+			<div th:each="detailedError : ${#fields.detailedErrors()}">
 				<span th:text="${detailedError.message}"></span>
 			</div>
 		</div>
