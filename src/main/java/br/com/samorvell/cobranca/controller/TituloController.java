@@ -2,6 +2,7 @@ package br.com.samorvell.cobranca.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,9 +57,7 @@ public class TituloController {
 	}
 
 	@RequestMapping("{codigo}")
-	public ModelAndView edicao(@PathVariable Long codigo) {
-		Titulo tiutlo = titulos.findOne(codigo);
-
+	public ModelAndView edicao(@PathVariable("codigo") Titulo titulo) {
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(titulo);
 		return mv;
@@ -71,3 +70,18 @@ public class TituloController {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

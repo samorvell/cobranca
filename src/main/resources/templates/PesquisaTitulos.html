@@ -39,8 +39,9 @@
 									</span>
 						</td>
 						<td class="text-center">
-						<a class="btn btn-link btn-xs ">
-						<span class="glyphicon glyphicon-pencil"></span></a>
+						<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <!--  th:href="@{/titulos/{codigo}(codigo=${titulo})}"-->
+						<span class="glyphicon glyphicon-pencil"
+						></span></a>
 						</td>
 					</tr>
 					<tr>
@@ -53,3 +54,5 @@
 	</div>
 </section>
 </html>
+
+
