@@ -40,7 +40,7 @@ public class TituloController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(@Validated Titulo titulo, Errors errors, RedirectAttributes attributes) {
 		if (errors.hasErrors()) {
-			return "CADASTRO_VIEW";
+			return "cadastrotitulo";
 		}
 
 		titulos.save(titulo);

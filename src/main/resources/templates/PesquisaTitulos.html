@@ -33,16 +33,17 @@
 						<td th:text="${titulo.descricao}"></td>
 						<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
 						<td class="text-right" th:text="|R$ ${{titulo.valor}}|"></td>
-						<td class="text-center">
-							<span class="label" th:text="${titulo.status.descricao}"
-									th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}">
-									</span>
-						</td>
-						<td class="text-center">
-						<a class="btn btn-link btn-xs" th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <!--  th:href="@{/titulos/{codigo}(codigo=${titulo})}"-->
-						<span class="glyphicon glyphicon-pencil"
-						></span></a>
-						</td>
+						<td class="text-center"><span class="label"
+							th:text="${titulo.status.descricao}"
+							th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}">
+						</span></td>
+						<td class="text-center"><a class="btn btn-link btn-xs"
+							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <!--  th:href="@{/titulos/{codigo}(codigo=${titulo})}"-->
+								<span class="glyphicon glyphicon-pencil"></span></a> <a
+							class="btn btn-link btn-xs" data-toggle="modal"
+							href="#confirmacaoExclusaoModal"> <span
+								class="glyphicon glyphicon-floppy-remove"></span>
+						</a></td>
 					</tr>
 					<tr>
 						<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum
@@ -50,9 +51,36 @@
 					</tr>
 				</tbody>
 			</table>
+			<!--  <div layout:insert="DialogoConfirmacaoExclusao"></div>-->
 		</div>
 	</div>
+	<div class="modal fade" th:id="confirmacaoExclusaoModal" tabindex="-1" >
+	<div class="modal-dialog">
+		<form action="/titulos" method="POST">
+			<input type="hidden" name="_method" value="DELETE" />
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Você tem certeza?</h4>
+				</div>
+				<div class="modal-body">
+					<span>Tem certeza que deseja apagar o título?</span>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Excluir</button>
+				</div>
+			</div>			<!-- /.modal-content -->
+		</form>
+	</div>	<!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </section>
 </html>
+
+
+
+
+
+
+
 
 
