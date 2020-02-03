@@ -2,7 +2,6 @@ package br.com.samorvell.cobranca.controller;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,24 +63,16 @@ public class TituloController {
 
 	}
 
+	@RequestMapping(value ="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo) {
+		titulos.deleteById(codigo);
+
+		return "redirect:/titulos";
+	}
+
 	@ModelAttribute("todosStatusTitulo")
 	public List<StatusTitulo> todosStatusTitulo() {
 		return Arrays.asList(StatusTitulo.values());
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

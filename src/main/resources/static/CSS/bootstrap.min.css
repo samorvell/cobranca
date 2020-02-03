@@ -87,7 +87,7 @@ code,kbd,pre,samp{
     font-size:1em
 }
 button,input,optgroup,select,textarea{
-    color:inherit;
+    color:##080808;
     font:inherit;
     margin:0
 }
@@ -2934,7 +2934,7 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
     width:100%
 }
 .fade{
-    opacity:0;
+    opacity:1;
     -webkit-transition:opacity .15s linear;
     -o-transition:opacity .15s linear;
     transition:opacity .15s linear
@@ -4971,7 +4971,7 @@ button.close{
 }
 .modal{
     position:fixed;
-    top:0;
+    top:50px;
     right:0;
     bottom:0;
     left:0;
@@ -4990,7 +4990,8 @@ button.close{
     -o-transition:-o-transform .3s ease-out;
     transition:-webkit-transform .3s ease-out;
     transition:transform .3s ease-out;
-    transition:transform .3s ease-out,-webkit-transform .3s ease-out,-o-transform .3s ease-out
+    transition:transform .3s ease-out,-webkit-transform .3s ease-out,-o-transform .3s ease-out;
+    background-color: blue;
 }
 .modal.in .modal-dialog{
     -webkit-transform:translate(0,0);
@@ -5005,10 +5006,11 @@ button.close{
 .modal-dialog{
     position:relative;
     width:auto;
-    margin:10px
+    margin:50px
 }
 .modal-content{
     position:relative;
+    top: 12px;
     background-color:#fff;
     background-clip:padding-box;
     border:1px solid #999;
@@ -5029,7 +5031,7 @@ button.close{
 }
 .modal-backdrop.fade{
     filter:alpha(opacity=0);
-    opacity:0
+    opacity:0.5
 }
 .modal-backdrop.in{
     filter:alpha(opacity=50);
@@ -5057,7 +5059,8 @@ button.close{
 }
 .modal-footer .btn+.btn{
     margin-bottom:0;
-    margin-left:5px
+    margin-left:5px;
+    background: #2670C5;
 }
 .modal-footer .btn-group .btn+.btn{
     margin-left:-1px
