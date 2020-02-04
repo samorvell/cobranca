@@ -55,7 +55,7 @@ public class TituloController {
 		return mv;
 	}
 
-	@RequestMapping("{codigo}")
+	@RequestMapping("/{codigo}")
 	public ModelAndView edicao(@PathVariable("codigo") Titulo titulo) {
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(titulo);
@@ -63,7 +63,7 @@ public class TituloController {
 
 	}
 
-	@RequestMapping(value ="{codigo}", method = RequestMethod.DELETE)
+	@RequestMapping(value ="{codigo}", method = RequestMethod.POST)
 	public String excluir(@PathVariable Long codigo) {
 		titulos.deleteById(codigo);
 
