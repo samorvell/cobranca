@@ -7,6 +7,8 @@
 <title>Pesquisa de títulos</title>
 </head>
 <section layout:fragment="conteudo">
+<div layout:insert="MensagemGeral"></div>
+
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<div class="clearfix">
@@ -38,11 +40,11 @@
 							th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}">
 						</span></td>
 						<td class="text-center"><a class="btn btn-link btn-xs"
-							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <!--  th:href="@{/titulos/{codigo}(codigo=${titulo})}"-->
+							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}" title="Editar" rel="tooltip" data-placemnt="top"> <!--  th:href="@{/titulos/{codigo}(codigo=${titulo})}"-->
 								<span class="glyphicon glyphicon-pencil"></span>
 						</a> 
 						<a class="btn btn-link btn-xs" data-toggle="modal"
-							data-target="#confirmacaoExclusaoModal" th:attr="data-codigo=${titulo.codigo}"> <span
+							data-target="#confirmacaoExclusaoModal" th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}" title="Excluir" rel="tooltip" data-placemnt="top"> <span
 								class="glyphicon glyphicon-floppy-remove"> 
 								</span>
 						</a>

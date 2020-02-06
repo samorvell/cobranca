@@ -2,6 +2,7 @@ package br.com.samorvell.cobranca.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.jar.Attributes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,9 +65,10 @@ public class TituloController {
 	}
 
 	@RequestMapping(value ="{codigo}", method = RequestMethod.POST)
-	public String excluir(@PathVariable Long codigo) {
+	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
 		titulos.deleteById(codigo);
-
+		
+		attributes.addFlashAttribute("mensagem", "Título excluído com sucesso!");
 		return "redirect:/titulos";
 	}
 
@@ -76,3 +78,33 @@ public class TituloController {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
