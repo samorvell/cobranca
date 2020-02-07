@@ -22,11 +22,10 @@
 				</div>
 			</div>
 			<div class="panel-body">
-				<input type="hidden" th:field="*{codigo}" />
-
 				<div class="form-group"
 					th:classappend="${#fields.hasErrors('descricao')} ? has-error">
-					<label for="descricao" class="col-sm-2 controle-label">Descrição</label>
+					<input type="hidden" th:field="*{codigo}" /> <label
+						for="descricao" class="col-sm-2 controle-label">Descrição</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="descricao"
 							th:field="*{descricao}" />
