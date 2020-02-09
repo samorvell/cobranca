@@ -52,7 +52,7 @@ public class TituloController {
 		}catch (InvalidDataAccessApiUsageException e) {
 			errors.rejectValue("dataVencimento", null, "Formato de data inválido");
 		}
-		return null;
+		return (CADASTRO_VIEW);
 	}
 
 	@RequestMapping
