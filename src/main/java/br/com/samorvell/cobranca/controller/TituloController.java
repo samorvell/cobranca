@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -30,7 +28,7 @@ public class TituloController {
 
 	@Autowired // injesão de dependencias para autoamticamente criar as tabelas na base
 	private Titulos titulos;
-	
+
 	@Autowired
 	private CadastroTituloService cadastroTituloService;
 
@@ -42,19 +40,20 @@ public class TituloController {
 		mv.addObject(new Titulo());
 		return mv;
 	}
-	
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(@Validated Titulo titulo, Errors errors, RedirectAttributes attributes) {
 		if (errors.hasErrors()) {
 			return "cadastrotitulo";
 		}
 
-		try{ //ver com o leo sobre uma forma de validar as informações enviadas pela tela, mas o thymeleaf já esta resolvendo isso
-			 cadastroTituloService.salvar(titulo);
+		try { // ver com o leo sobre uma forma de validar as informações enviadas pela tela,
+				// mas o thymeleaf já esta resolvendo isso
+			cadastroTituloService.salvar(titulo);
 			attributes.addFlashAttribute("mensagem", "Título salvo com sucesso!");
 			return "redirect:/titulos/novo";
-		}catch (IllegalArgumentException e) { //ao usar banco oracle o erro retornado é essa classe InvalidDataAccessApiUsageException
+		} catch (IllegalArgumentException e) { // ao usar banco oracle o erro retornado é essa classe
+												// InvalidDataAccessApiUsageException
 			errors.rejectValue("dataVencimento", null, e.getMessage());
 		}
 		return (CADASTRO_VIEW);
@@ -76,12 +75,18 @@ public class TituloController {
 
 	}
 
-	@RequestMapping(value ="{codigo}", method = RequestMethod.POST)
+	@RequestMapping(value = "{codigo}", method = RequestMethod.POST)
 	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
 		cadastroTituloService.excluir(codigo);
-		
+
 		attributes.addFlashAttribute("mensagem", "Título excluído com sucesso!");
 		return "redirect:/titulos";
+	}
+
+	@RequestMapping(value = "/{codigo}/receber", method = RequestMethod.PUT)
+	public @ResponseBody String receber(@PathVariable Long codigo) {
+		cadastroTituloService.receber(codigo);
+		return "Ok";
 	}
 
 	@ModelAttribute("todosStatusTitulo")
@@ -90,33 +95,3 @@ public class TituloController {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
