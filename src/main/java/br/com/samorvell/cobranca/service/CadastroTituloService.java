@@ -30,7 +30,7 @@ public class CadastroTituloService {
 
 	}
 
-	public void receber(Long codigo) {
+	public String receber(Long codigo) {
 		Optional<Titulo> tituloOptional = titulos.findById(codigo);
 		
 		Titulo titulo = null;
@@ -41,7 +41,10 @@ public class CadastroTituloService {
 			
 			titulo.setStatus(StatusTitulo.RECEBIDO);
 			titulos.save(titulo);
+			
+			return StatusTitulo.RECEBIDO.getDescricao();
 		}
+		return null;
 		
 		
 		

@@ -83,10 +83,10 @@ public class TituloController {
 		return "redirect:/titulos";
 	}
 
-	@RequestMapping(value = "/{codigo}/receber", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{codigo}/receber", method = RequestMethod.PUT)//cai no controllerque foi mapeado via PUT que pelo responsebody uma string que foi definido no metodo receber
 	public @ResponseBody String receber(@PathVariable Long codigo) {
-		cadastroTituloService.receber(codigo);
-		return "Ok";
+		return cadastroTituloService.receber(codigo);
+		
 	}
 
 	@ModelAttribute("todosStatusTitulo")

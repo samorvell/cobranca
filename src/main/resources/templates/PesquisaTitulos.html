@@ -18,6 +18,18 @@
 			</div>
 		</div>
 		<div class="panel-body">
+			<form method="GET" class="form-horizontal">
+				<div class="form-group">
+					<div class="col-sm4">
+						<div class="input-group">
+							<input class="form-control"></input> <span class="input-group-btn"></span>
+							<button type="submit" class="btn btn-default">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
@@ -35,10 +47,12 @@
 						<td th:text="${titulo.descricao}"></td>
 						<td class="text-center" th:text="${{titulo.dataVencimento}}"></td>
 						<td class="text-right" th:text="|R$ ${{titulo.valor}}|"></td>
-						<td class="text-center"><span class="label"
-							th:text="${titulo.status.descricao}"
+						<td class="text-center" th:attr="data-role=${titulo.codigo}">
+							<!--tag td que identifica o codigo do titulo para atualizar via ajax apenas o status ao clicar no botão de atualizar status-->
+							<span class="label" th:text="${titulo.status.descricao}"
 							th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}">
-						</span></td>
+						</span>
+						</td>
 						<td class="text-center"><a class="btn btn-link btn-xs"
 							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"
 							title="Editar" rel="tooltip" data-placemnt="top"> <!--  th:href="@{/titulos/{codigo}(codigo=${titulo})}"-->
@@ -48,13 +62,12 @@
 							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}"
 							title="Excluir" rel="tooltip" data-placemnt="top"> <span
 								class="glyphicon glyphicon-floppy-remove"> </span>
-						</a>
-						<a class="btn btn-link btn-xs js-atualizar-status" th:if="${titulo.pendente}"
-						title="Receber" rel="tooltip" data-placemnt="top" 
-						th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}">
-							<span class="glyphicon glyphicon-check" ></span>
-						</a>
-						</td>
+						</a> <a class="btn btn-link btn-xs js-atualizar-status"
+							th:if="${titulo.pendente}" title="Receber" rel="tooltip"
+							data-placemnt="top" th:attr="data-codigo=${titulo.codigo}"
+							th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}">
+								<span class="glyphicon glyphicon-check"></span>
+						</a></td>
 					</tr>
 					<tr>
 						<td colspan="6" th:if="${#lists.isEmpty(titulos)}">Nenhum

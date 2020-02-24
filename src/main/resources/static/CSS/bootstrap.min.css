@@ -2646,7 +2646,7 @@ select[multiple].input-lg,textarea.input-lg{
     cursor:pointer;
     background-image:none;
     border:1px solid transparent;
-    padding:6px 12px;
+    padding:6px 12px 6px;
     font-size:14px;
     line-height:1.42857143;
     border-radius:4px;
@@ -3246,7 +3246,10 @@ tbody.collapse.in{
 .input-group{
     position:relative;
     display:table;
-    border-collapse:separate
+    border-collapse:separate;
+    padding-botto:5px;
+    padding-left:15px
+    
 }
 .input-group[class*=col-]{
     float:none;
@@ -3254,9 +3257,9 @@ tbody.collapse.in{
     padding-left:0
 }
 .input-group .form-control{
-    position:relative;
+    position:;
     z-index:2;
-    float:left;
+    float:;
     width:100%;
     margin-bottom:0
 }

@@ -33,11 +33,47 @@ $(function() {
 		var botaoReceber = $(event.currentTarget);
 		var urlReceber = botaoReceber.attr('href');
 
-		var response = $.ajax({
-			url : urlReceber,
-			type : 'PUT'
+		var response = $.ajax({//requisção via ajax para recuperar o status
+			url : urlReceber,//url que já estava no botão
+			type : 'PUT' //recebido via PUT
+		});
+		
+		
+		response.done(function(e) {//função responsavel em receber o status do titulo ao atualizar pelo botão que faz a troca de pendente para o status recuperado
+			var codigoTitulo = botaoReceber.data('codigo');
+			$('[data-role=' + codigoTitulo + ']' ).html('<span class="label label-success">' + e + '</span>');
+			botaoReceber.hide();
+		});
+
+		response.fail(function(e) {
+			console.log(e);
+			alert('Erro recebendo cobraça')
+
 		});
 
 	});
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
