@@ -2682,7 +2682,9 @@ a.btn.disabled,fieldset[disabled] a.btn{
 .btn-default{
     color:#333;
     background-color:#fff;
-    border-color:#ccc
+    border-color:#ccc;
+    position:absolute;
+    
 }
 .btn-default.focus,.btn-default:focus{
     color:#333;
@@ -3257,9 +3259,7 @@ tbody.collapse.in{
     padding-left:0
 }
 .input-group .form-control{
-    position:;
     z-index:2;
-    float:;
     width:100%;
     margin-bottom:0
 }
@@ -3301,7 +3301,7 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
     border-radius:0
 }
 .input-group-addon,.input-group-btn{
-    width:1%;
+    width:100%;
     white-space:nowrap;
     vertical-align:middle
 }
@@ -3344,7 +3344,7 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
     border-left:0
 }
 .input-group-btn{
-    position:relative;
+    
     font-size:0;
     white-space:nowrap
 }
