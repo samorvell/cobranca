@@ -14,26 +14,27 @@
 			<div class="clearfix">
 				<h1 class="panel-title sml-titulo-panel">Pesquisa títulos</h1>
 				<a class="btn btnlink sml-link-panel" href="/titulos/novo">Novo
-					título</a>
+					título </a>
 			</div>
 		</div>
 		<div class="panel-body">
-			<form method="GET" class="form-horizontal">
+			<form method="GET" class="form-horizontal" action="/titulos"
+				th:object="${filtro}">
 				<div class="form-group">
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="input-group">
-							<input class="form-control"
-								placeholder="Qual título você esta procurando?"
-								autofocus="autofocus" name="descricao"></input> 
-								<span class="input-group-btn">
-								<button type="submit" class="btn btn-default">
-									<i class="glyphicon glyphicon-search"></i>
-								</button>
-							</span>
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="input-group">
+								<input class="form-control"
+									placeholder="Qual título você esta procurando?"
+									autofocus="autofocus" th:field="*{descricao}"></input> <span
+									class="input-group-btn">
+									<button type="submit" class="btn btn-default">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</span>
+							</div>
 						</div>
 					</div>
-				</div>
 				</div>
 			</form>
 			<table class="table table-bordered table-striped">
