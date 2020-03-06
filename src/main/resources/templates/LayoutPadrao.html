@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8" />
 <title>Cobrança</title>
-<link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/CSS/style.css" />
-<link rel="stylesheet" type="text/css" href="/CSS/bootstrap-datepicker-standalone.min.css" />
+<link th:href="@{images/favicon.ico}" type="imagens/ico" rel="shortcut icon" />
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/style.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/bootstrap-datepicker-standalone.min.css}" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -17,11 +18,11 @@
 		<p>Conteúdo principal</p>
 	</section>
 
-	<script src="/JS/jquery-3.4.1.min.js"></script>
-	<script src="/JS/bootstrap.min.js"></script>
-	<script src="/JS/bootstrap-datepicker.min.js"></script>
-	<script src="/JS/bootstrap-datepicker.pt-BR.min.js"></script>
-	<script src="/JS/jquery.maskMoney.min.js"></script>
-	<script src="/JS/cobranca.js"></script>
+	<script th:src="@{/JS/jquery-3.4.1.min.js}"></script>
+	<script th:src="@{/JS/bootstrap.min.js}"></script>
+	<script th:src="@{/JS/bootstrap-datepicker.min.js}"></script>
+	<script th:src="@{/JS/bootstrap-datepicker.pt-BR.min.js}"></script>
+	<script th:src="@{/JS/jquery.maskMoney.min.js}"></script>
+	<script th:src="@{/JS/cobranca.js}"></script>
 </body>
 </html>

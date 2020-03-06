@@ -7,7 +7,7 @@
 <title>Cadastro de título</title>
 </head>
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" method="POST" action="/titulos"
+	<form class="form-horizontal" method="POST" th:action="@{/titulos}"
 		th:object="${titulo}">
 		<!-- se no objeto #titulo conter erros ele renderisa o #fields -->
 		<div layout:insert="MensagemGeral"></div>
@@ -17,7 +17,7 @@
 			<div class="panel-heading">
 				<div class="clearfix">
 					<h1 class="panel-title sml-titulo-panel">Novo título</h1>
-					<a class="btn btnlink sml-link-panel" href="/titulos/">Voltar
+					<a class="btn btnlink sml-link-panel" th:href="@{/titulos/}">Voltar
 						para pesqusisa</a>
 				</div>
 			</div>
