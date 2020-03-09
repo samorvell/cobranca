@@ -23,19 +23,19 @@
 			</div>
 			<div class="panel-body">
 				
-				<div class="form-group"
-					th:classappend="${#fields.hasErrors('descricao')} ? has-error">
-					<input type="hidden" th:field="*{codigo}" /> <label
-						for="descricao" class="col-sm-2 controle-label">Descrição</label>
+				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+					<input type="hidden" th:field="*{descricao}" /> 
+					<label
+						for="descricao" class="col-sm-2 controle-label">Descrição
+					</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="descricao"
 							th:field="*{descricao}" />
 					</div>
 				</div>
-				<div class="form-group"
-					th:classappend="${#fields.hasErrors('dataVencimento')} ? has-error">
-					<label for="dataVencimento" class="col-sm-2 controle-label">Data
-						de Vencimento</label>
+				<div class="form-group" th:classappend="${#fields.hasErrors('dataVencimento')} ? has-error">
+					<label for="dataVencimento" class="col-sm-2 controle-label">Data de Vencimento
+				    </label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" id="dataVencimento"
 							th:field="*{dataVencimento}" data-provide="datepicker"

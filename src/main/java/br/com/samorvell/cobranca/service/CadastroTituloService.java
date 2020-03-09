@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
 import br.com.samorvell.cobranca.model.StatusTitulo;
@@ -22,7 +22,7 @@ public class CadastroTituloService {
 	public void salvar(Titulo titulo) {
 		try {
 			titulos.save(titulo);
-		} catch (DataIntegrityViolationException e) { //exception de baixo nivel voltado para banco de dados, foi mudado para IllegalArgumentException para poder subir o nivel e passar para tela
+		} catch (InvalidDataAccessApiUsageException e) { //exception de baixo nivel voltado para banco de dados, foi mudado para IllegalArgumentException para poder subir o nivel e passar para tela
 			throw new IllegalArgumentException("Formado de data inválido!");
 		}
 	}
