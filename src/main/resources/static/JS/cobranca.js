@@ -14,9 +14,7 @@ $('#confirmacaoExclusaoModal').on(
 			}
 			form.attr('action', action + codigoTitulo);
 
-			modal.find('.modal-body').html(
-					'Tem certeza que deseja excluir o título <strong>'
-							+ descricaoTitulo + '</strong>?');
+			modal.find('.modal-body').html('Tem certeza que deseja excluir o título <strong>' + descricaoTitulo + '</strong>?');
 		});
 
 $(function() {
@@ -33,13 +31,13 @@ $(function() {
 		var botaoReceber = $(event.currentTarget);
 		var urlReceber = botaoReceber.attr('href');
 
-		var response = $.ajax({//requisção via ajax para recuperar o status
-			url : urlReceber,//url que já estava no botão
-			type : 'PUT' //recebido via PUT
+		var response = $.ajax({		//requisção via ajax para recuperar o status
+			url : urlReceber,		//url que já estava no botão
+			type : 'PUT' 			//recebido via PUT
 		});
 		
 		
-		response.done(function(e) {//função responsavel em receber o status do titulo ao atualizar pelo botão que faz a troca de pendente para o status recuperado
+		response.done(function(e) {		//função responsavel em receber o status do titulo ao atualizar pelo botão que faz a troca de pendente para o status recuperado
 			var codigoTitulo = botaoReceber.data('codigo');
 			$('[data-role=' + codigoTitulo + ']' ).html('<span class="label label-success">' + e + '</span>');
 			botaoReceber.hide();

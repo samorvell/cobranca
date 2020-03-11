@@ -57,22 +57,28 @@
 						<td class="text-center" th:attr="data-role=${titulo.codigo}">
 							<!--tag td que identifica o codigo do titulo para atualizar via ajax apenas o status ao clicar no botão de atualizar status-->
 							<span class="label" th:text="${titulo.status.descricao}"
-							th:classappend="${titulo.pendente ? 'label-warning' : 'label-success'}">
+							th:classappend="${(titulo.pendente ? 'label-warning' : titulo.cancelado ? 'label-danger':'label-success') }">
+								<!-- th:classappend="${(titulo.pendente ? 'label-warning' : titulo.cancelado ? 'label-danger' : 'label-success') }" > ou -->
+								<!-- <td th:if="${shop.shopId == order.shopId}"><a th:text="${shop.shopName}" th:href="'/shops/'+${shop.shopId}">Bling</a></td>
+									<td th:if="${objeto.atributo =='algo'}"> Alguma coisa aqui </td> -->
 						</span>
 						</td>
-						<td class="text-center"><a class="btn btn-link btn-xs"
+						<td class="text-center">
+						<a class="btn btn-link btn-xs"
 							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"
 							title="Editar" rel="tooltip" data-placemnt="top"> <!--  th:href="@{/titulos/{codigo}(codigo=${titulo})}"-->
-								<span class="glyphicon glyphicon-pencil"></span>
-						</a> <a class="btn btn-link btn-xs" data-toggle="modal"
-							data-target="#confirmacaoExclusaoModal"
-							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}"
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a> 
+						
+						<a class="btn btn-link btn-xs" data-toggle="modal"	data-target="#confirmacaoExclusaoModal"
+							th:attr="data-codigo=${titulo.codigo} data-descricao=${titulo.descricao}"
 							title="Excluir" rel="tooltip" data-placemnt="top"> <span
 								class="glyphicon glyphicon-floppy-remove"> </span>
 						</a> <a class="btn btn-link btn-xs js-atualizar-status"
 							th:if="${titulo.pendente}" title="Receber" rel="tooltip"
 							data-placemnt="top" th:attr="data-codigo=${titulo.codigo}"
 							th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}">
+
 								<span class="glyphicon glyphicon-check"></span>
 						</a></td>
 					</tr>
@@ -81,6 +87,8 @@
 							título foi encontrado</td>
 					</tr>
 				</tbody>
+
+
 			</table>
 		</div>
 		<div layout:insert="DialogoConfirmacaoExclusao"></div>

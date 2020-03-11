@@ -22,9 +22,8 @@
 				</div>
 			</div>
 			<div class="panel-body">
-				
 				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
-					<input type="hidden" th:field="*{descricao}" /> 
+					<!-- <input type="hidden" th:field="*{descricao}" /> --> 
 					<label
 						for="descricao" class="col-sm-2 controle-label">Descrição
 					</label>
@@ -57,7 +56,7 @@
 					<div class="col-sm-2">
 						<select class="form-controle" name="status" th:field="*{status}"> <!-- th:field="*{mais a o objeto a ser recuperado e mantido}" -->
 							<option th:each="status : ${todosStatusTitulo}"
-								th:value="${status}" th:text="${status.descricao}"></option>
+								th:value="${status}" th:text="${status.descricao}"></option> <!--  -->
 						</select>
 					</div>
 				</div>

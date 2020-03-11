@@ -13,10 +13,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -31,11 +31,12 @@ public class Titulo {
 	@Size(max = 60, message = "A descrição não pode conter mais de 60 caracteres")
 	private String descricao;
 
-	@NotNull(message = "Data de vencimento obrigatório informar")
+	@NotNull(message = "Data de vencimento obrigatório informar!")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataVencimento;
 
+	
 	@NotNull(message = "Valor é obrigatório")
 	@DecimalMin(value = "0.01", message = "Valor não pode menor que R$ 0,01")
 	@DecimalMax(value = "9999999.99", message = "Valor não pode ser maior que R$ 9.999.999,99")
@@ -113,5 +114,13 @@ public class Titulo {
 	public boolean isPendente() {
 		return StatusTitulo.PENDENTE.equals(this.status);
 	}
+	
+	public boolean isCancelado() {
+		return StatusTitulo.CANCELADO.equals(this.status);
+	}
+	
+//	public boolean isRecebido() {
+//		return StatusTitulo.RECEBIDO.equals(this.status);
+//	}
 
 }
