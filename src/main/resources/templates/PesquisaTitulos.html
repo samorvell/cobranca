@@ -71,10 +71,12 @@
 						</a> 
 						
 						<a class="btn btn-link btn-xs" data-toggle="modal"	data-target="#confirmacaoExclusaoModal"
-							th:attr="data-codigo=${titulo.codigo} data-descricao=${titulo.descricao}"
-							title="Excluir" rel="tooltip" data-placemnt="top"> <span
-								class="glyphicon glyphicon-floppy-remove"> </span>
-						</a> <a class="btn btn-link btn-xs js-atualizar-status"
+							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}"
+							title="Excluir" rel="tooltip" data-placemnt="top"> 
+							<span class="glyphicon glyphicon-floppy-remove"> </span>
+						</a> 
+						
+						<a class="btn btn-link btn-xs js-atualizar-status"
 							th:if="${titulo.pendente}" title="Receber" rel="tooltip"
 							data-placemnt="top" th:attr="data-codigo=${titulo.codigo}"
 							th:href="@{/titulos/{codigo}/receber(codigo=${titulo.codigo})}">
