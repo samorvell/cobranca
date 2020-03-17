@@ -1,34 +1,37 @@
 /*Tela Grande*/
-@media(min-width: 768px){
-		.panel-default{
+@media ( min-width : 768px) {
+	.panel-default {
 		margin-left: 10px;
 		margin-right: 10px;
 	}
-	.alert{
+	.alert {
 		margin-left: 10px;
 		margin-right: 10px;
 	}
 }
-.navbar-brand{
+
+.navbar-brand {
 	padding-top: 12px;
 }
 
-.sml-titulo-panel{
+.sml-titulo-panel {
 	float: left;
 	padding-top: 2px;
 	font-weight: bold;
 }
-.sml-link-panel{
+
+.sml-link-panel {
 	float: right;
 	padding: 0px;
 }
 
-h1{
-    margin:.67em 0;
-    font-size:2em;
-    font-weight: bold;
+h1 {
+	margin: .67em 0;
+	font-size: 2em;
+	font-weight: bold;
 }
+
 .input-group .form-control {
- 	display: inline-block;
- 	width: 244px;
+	display: inline-block;
+	width: 244px;
 }
